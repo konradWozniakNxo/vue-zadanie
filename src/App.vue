@@ -1,41 +1,34 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="grey lighten-3"
-      dark
-    >
-      <div class="d-flex align-center">
-        <p class="grey lighten-2 black--text">Logo</p>
-
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <HelloWorld/>
+    <v-toolbar style="z-index:1;" class="grey lighten-3">
+      <v-toolbar-title width="100vw" class="grey lighten-2 black--text">Logo</v-toolbar-title>     
+    </v-toolbar>
+    <v-main class="grey lighten-4" >
+      <v-container fluid class="grey lighten-5" style="padding:0px;">
+      <v-row no-gutters>
+        <v-col cols="1" >
+          <LeftList/>
+        </v-col>
+        <v-col cols="11">
+          <router-view></router-view>
+        </v-col>
+      </v-row>
+    </v-container>
+      
     </v-main>
+     
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import LeftList from './components/LeftList';
+
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    LeftList,
   },
 
   data: () => ({
