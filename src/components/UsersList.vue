@@ -61,10 +61,14 @@
         </v-card-title>
          <v-card-text>
          {{item.name}}
-        </v-card-text>
-        <v-card-text class="orange white--text" >
-         Zostaniesz wylogowany i utracisz dostęp do systemu!
-        </v-card-text>
+        </v-card-text>      
+        <v-alert
+          dense
+          border="left"
+          type="warning"
+        >
+          Zostaniesz wylogowany i utracisz dostęp do systemu
+        </v-alert>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
