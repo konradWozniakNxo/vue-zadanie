@@ -1,10 +1,11 @@
+
 <template>
   <v-card
     class="mx-auto"
-    max-width="400"
+    max-width="800"
     tile
   >
-    <v-list-item>
+    <v-list-item class="lista">
       <v-list-item-content>
         <v-list-item-title>Single-line item</v-list-item-title>
       </v-list-item-content>
@@ -30,3 +31,9 @@
     </v-list-item>
   </v-card>
 </template>
+
+<style>
+.lista{
+  margin-top: 25px;
+}
+</style>

@@ -20,8 +20,3 @@
     </v-expansion-panels>
   </v-card>
 </template>
-<script>
-  export default {
-    name: 'LeftList',
-  }
-</script>

@@ -7,9 +7,8 @@
 import UsersList from '@/components/UsersList.vue'
 
 export default {
-  name: 'Home',
   components: {
-    UsersList
+    UsersList,
   }
 }
 </script>
