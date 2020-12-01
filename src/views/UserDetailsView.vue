@@ -12,8 +12,8 @@ import BackButton from '@/components/BackButton.vue'
 
 export default {
   components: {
-    UserDetails,
     BackButton,
+    UserDetails,
   }
 }
 </script>

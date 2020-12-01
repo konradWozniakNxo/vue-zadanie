@@ -36,7 +36,7 @@
             <tbody>
               <tr v-for="item in list" v-bind:key="item.id">
                 <td>{{item.id}}</td>
-                <td><router-link to="/Home">{{item.name}}</router-link></td>
+                <td><router-link :to="{ name: 'user', params: { id:item.id }}">{{item.name}}</router-link></td>
                 <td>{{item.username}}</td>
                 <td>{{item.email}}</td>
                 <td>{{item.phone}}</td>

@@ -1,36 +1,51 @@
 
 <template>
   <v-card
-    class="mx-auto"
-    max-width="800"
-    tile
+  class="mx-auto"
+  max-width="1100"
   >
-    <v-list-item class="lista">
-      <v-list-item-content>
-        <v-list-item-title>Single-line item</v-list-item-title>
-      </v-list-item-content>
-    </v-list-item>
-
-    <v-list-item two-line>
-      <v-list-item-content>
-        <v-list-item-title>Two-line item</v-list-item-title>
-        <v-list-item-subtitle>Secondary text</v-list-item-subtitle>
-      </v-list-item-content>
-    </v-list-item>
-
-    <v-list-item three-line>
-      <v-list-item-content>
-        <v-list-item-title>Three-line item</v-list-item-title>
-        <v-list-item-subtitle>
-          Secondary line text Lorem ipsum dolor sit amet,
-        </v-list-item-subtitle>
-        <v-list-item-subtitle>
-          consectetur adipiscing elit.
-        </v-list-item-subtitle>
-      </v-list-item-content>
-    </v-list-item>
+    <div v-for="address in list" v-bind:key="address">
+      {{address.street}}
+      {{address.suite}}
+      {{address.city}}
+      {{address.zipcode}}
+    </div>
   </v-card>
 </template>
+
+<script>
+import Vue from 'vue';
+export default {
+  name: 'UsersList',
+    data(){
+     return {list:[]}
+   },
+    
+  computed: {
+    user() {
+      return this.$route.params.user;
+    }
+  },
+  
+  watch: {
+    user() {
+      this.$axios.get(`https://jsonplaceholder.typicode.com/users/${this.user}`).then((resp)=> {
+          this.list = resp.data;
+          console.log('1');
+      })
+    }
+  },
+
+  mounted()
+   {
+     Vue.axios.get(`https://jsonplaceholder.typicode.com/users/1`).then((resp)=> {
+      this.list = resp.data;
+      console.warn(resp.data);   
+      console.log('2');
+     })
+   },
+}
+</script>
 
 <style>
 .lista{
