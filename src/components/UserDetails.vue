@@ -5,10 +5,10 @@
   max-width="1100"
   >
     <div v-for="address in list" v-bind:key="address">
-      {{address.street}}
-      {{address.suite}}
-      {{address.city}}
-      {{address.zipcode}}
+      <div>{{address.street}}</div>
+      <div>{{address.suite}}</div>
+      <div>{{address.city}}</div>
+      <div>{{address.zipcode}}</div>
     </div>
   </v-card>
 </template>
@@ -23,25 +23,15 @@ export default {
     
   computed: {
     user() {
-      return this.$route.params.user;
+      return this.$route.params.id;
     }
   },
   
-  watch: {
-    user() {
-      this.$axios.get(`https://jsonplaceholder.typicode.com/users/${this.user}`).then((resp)=> {
-          this.list = resp.data;
-          console.log('1');
-      })
-    }
-  },
-
   mounted()
    {
-     Vue.axios.get(`https://jsonplaceholder.typicode.com/users/1`).then((resp)=> {
+     Vue.axios.get(`https://jsonplaceholder.typicode.com/users/${this.$route.params.id}`).then((resp)=> {
       this.list = resp.data;
       console.warn(resp.data);   
-      console.log('2');
      })
    },
 }
