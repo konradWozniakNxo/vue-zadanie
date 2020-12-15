@@ -14,26 +14,21 @@
 </template>
 
 <script>
-import Vue from 'vue';
 export default {
-  name: 'UsersList',
-    data(){
-     return {list:[]}
-   },
-    
-  computed: {
-    user() {
-      return this.$route.params.id;
+  data () {
+    return {
     }
   },
-  
-  mounted()
-   {
-     Vue.axios.get(`https://jsonplaceholder.typicode.com/users/${this.$route.params.id}`).then((resp)=> {
-      this.list = resp.data;
-      console.warn(resp.data);   
-     })
-   },
+
+  computed: {
+    list() {
+    return this.$store.state.list
+    },
+  },
+
+  mounted() {
+    this.$store.dispatch("getListDetails", { id: this.$route.params.id});   
+  },
 }
 </script>
 

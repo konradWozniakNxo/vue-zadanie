@@ -7,23 +7,19 @@
       <v-container fluid class="grey lighten-5" style="padding:0px;">
       <v-row no-gutters>
         <v-col cols="1" >
-          <LeftList/>
+          <LeftList name="Użytkownicy"/>
         </v-col>
         <v-col cols="11">
           <router-view></router-view>
         </v-col>
       </v-row>
     </v-container>
-      
     </v-main>
-     
   </v-app>
 </template>
 
 <script>
 import LeftList from './components/LeftList';
-
-
 export default {
   name: 'App',
 

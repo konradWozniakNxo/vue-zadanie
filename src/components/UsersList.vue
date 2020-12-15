@@ -102,21 +102,23 @@
 </template>
 
 <script>
-import Vue from 'vue';
-
 export default {
-   name: 'UsersList',
-   data(){
-     return{list:undefined} 
-   },
-   mounted()
-   {
-     Vue.axios.get('https://jsonplaceholder.typicode.com/users')
-     .then((resp)=>{
-       this.list=resp.data;
-       console.warn(resp.data)
-     })
-   }
+  data () {
+    return {
+      
+    }
+  },
+
+  computed: {
+    list() {
+    return this.$store.state.list
+    }
+  },
+  
+  mounted() {
+    this.$store.dispatch("getList", {
+    });   
+  },
 }
 </script>
 

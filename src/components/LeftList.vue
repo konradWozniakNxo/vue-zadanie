@@ -14,9 +14,18 @@
           Administracja 
         </v-expansion-panel-header>
         <v-expansion-panel-content>
-          Użytkownicy
+          {{ name }}
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
   </v-card>
 </template>
+
+<script>
+export default {
+  props:[
+    'name',
+
+  ]
+}
+</script>
