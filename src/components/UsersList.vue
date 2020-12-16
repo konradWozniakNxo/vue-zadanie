@@ -41,21 +41,14 @@
                 <td>{{item.email}}</td>
                 <td>{{item.phone}}</td>
                 <td>{{item.company.name}}</td>
-                <td>
+                <td><v-btn icon @click="dialog = true"><v-icon color="darken-2">mdi-arrow-left</v-icon></v-btn></td>                 
                   <template>
                     <v-row justify="center">
-                      <v-dialog
+                      <v-dialog 
+                        persistent
                         v-model="dialog"
                         width="600px"
-                      >
-                        <template v-slot:activator="{ on, attrs }">
-                          <v-btn
-                            icon
-                            v-bind="attrs"
-                            v-on="on"
-                          >
-                          <v-icon color="darken-2">mdi-arrow-left</v-icon></v-btn>
-                        </template>
+                      >                 
                         <v-card>
                           <v-card-title>
                             <span class="headline">Czy na pewno usunać użytkownika</span>
@@ -72,7 +65,7 @@
                           </v-alert>
                           <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn
+                            <v-btn 
                               color="grey darken-1"
                               text
                               @click="dialog = false"
@@ -91,7 +84,6 @@
                       </v-dialog>
                     </v-row>
                   </template>
-                </td>
               </tr> 
             </tbody>
           </template>
@@ -105,7 +97,7 @@
 export default {
   data () {
     return {
-      
+      dialog: false,
     }
   },
 
