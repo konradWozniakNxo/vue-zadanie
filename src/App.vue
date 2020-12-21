@@ -9,8 +9,13 @@
         <v-col cols="1" >
           <LeftList name="Użytkownicy"/>
         </v-col>
-        <v-col cols="11">
+         <v-col cols="1" >
+        </v-col>
+        <v-col cols="9">
+          <CrudList/>
           <router-view></router-view>
+        </v-col>
+          <v-col cols="1" >
         </v-col>
       </v-row>
     </v-container>
@@ -20,11 +25,13 @@
 
 <script>
 import LeftList from './components/LeftList';
+import CrudList from './components/CrudList';
 export default {
   name: 'App',
 
   components: {
     LeftList,
+    CrudList,
   },
 
   data: () => ({
