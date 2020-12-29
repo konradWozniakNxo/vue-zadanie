@@ -1,8 +1,7 @@
 <template>
   <v-data-table
     :headers="headers"
-    :items="desserts"
-    sort-by="calories"
+    :items="objects"
     class="elevation-1"
   >
     <template v-slot:top>
@@ -61,13 +60,13 @@
                 </v-row>  
                 <v-row>
                   <v-col
-                    cols="12"
-     
+                    cols="12"                   
                   >
-                    <v-text-field
+                    <v-textarea
+                      auto-grow
                       v-model="editedItem.body"
                       label="Text"
-                    ></v-text-field>
+                    ></v-textarea>
                   </v-col>
                 </v-row>
               </v-container>
@@ -148,27 +147,23 @@ import Vue from 'vue';
         { text: 'Tekst', value: 'body' },   
         { text: 'Actions', value: 'actions', sortable: false },
       ],
-      desserts: [],
+      objects: [],
       editedIndex: -1,
       editedItem: {
-        name: '',
-        calories: 0,
-        fat: 0,
-        carbs: 0,
-        protein: 0,
+        id: '',
+        title: '',
+        body: '',
       },
       defaultItem: {
-        name: '',
-        calories: 0,
-        fat: 0,
-        carbs: 0,
-        protein: 0,
+      id: '',
+      title: '',
+      body: '',
       },
     }),
 
     computed: {
       formTitle () {
-        return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
+        return this.editedIndex === -1 ? 'Nowy artykuł' : 'Edytuj artykuł'
       },
     },
 
@@ -188,33 +183,31 @@ import Vue from 'vue';
     mounted()
    {
      Vue.axios.get(`https://jsonplaceholder.typicode.com/posts`).then((resp)=> {
-      this.desserts = resp.data;
-      console.warn(resp.data);   
-      console.log('2');
+      this.objects = resp.data;
      })
    },
 
     methods: {
       initialize () {
-        this.desserts = [
+        this.objects = [
          
         ]
       },
 
       editItem (item) {
-        this.editedIndex = this.desserts.indexOf(item)
+        this.editedIndex = this.objects.indexOf(item)
         this.editedItem = Object.assign({}, item)
         this.dialog = true
       },
 
       deleteItem (item) {
-        this.editedIndex = this.desserts.indexOf(item)
+        this.editedIndex = this.objects.indexOf(item)
         this.editedItem = Object.assign({}, item)
         this.dialogDelete = true
       },
 
       deleteItemConfirm () {
-        this.desserts.splice(this.editedIndex, 1)
+        this.objects.splice(this.editedIndex, 1)
         this.closeDelete()
       },
 
@@ -236,9 +229,9 @@ import Vue from 'vue';
 
       save () {
         if (this.editedIndex > -1) {
-          Object.assign(this.desserts[this.editedIndex], this.editedItem)
+          Object.assign(this.objects[this.editedIndex], this.editedItem)
         } else {
-          this.desserts.push(this.editedItem)
+          this.objects.push(this.editedItem)
         }
         this.close()
       },
